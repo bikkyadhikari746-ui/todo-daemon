@@ -20,6 +20,9 @@ public class Task {
      public void setStatus(boolean a){
          this.status=a;
      }
+     public boolean getStatus(){
+         return this.status ;
+     }
      @Override
     public String toString(){
          return "TaskName="+this.Taskname+"Sechduletime"+this.secheduletime+"status"+this.status;

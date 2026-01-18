@@ -38,9 +38,15 @@ public class Main {
 
 
         for(Task i:tasks){
-            Runnable alarm=new Alarmaclock(i);
-            long delay = Delay(i.taskTime());
-            shedules.schedule(alarm,delay,TimeUnit.MILLISECONDS);
+            if (i.getStatus()){
+                Runnable alarm=new Alarmaclock(i,tasks);
+                long delay = Delay(i.taskTime());
+                shedules.schedule(alarm,delay,TimeUnit.MILLISECONDS);
+            }
+            else{
+                continue;
+            }
+
         }
 
 
@@ -58,15 +64,10 @@ public class Main {
     }
 
 
-
-
-
-    public static void alarm(Task task){
-        System.out.println(task.getTaskName());
-        System.out.println("Task need to Complete");
-    }
-    public static void Saving(String task){
+    public static void Saving(ArrayList tasks){
         try {
+            Gson gson = new Gson();
+            String task = gson.toJson(tasks);
             FileWriter writer= new FileWriter("data.json");
             writer.write(task);
             writer.close();
