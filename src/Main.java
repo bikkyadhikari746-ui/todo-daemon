@@ -1,6 +1,8 @@
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        ScheduledExecutorService shedule = Executors.newScheduledThreadPool(1);
+        ScheduledExecutorService shedules = Executors.newScheduledThreadPool(1);
 
         Scanner scan = new Scanner(System.in);
         Gson text = new Gson();
@@ -53,13 +55,21 @@ public class Main {
 //        }
         for(Task i:tasks){
             Runnable alarm=new Alarmaclock(i);
-            long delay = Delay(i.tasktime(),)
-            shedule.schedule(alarm,i.taskTime());
+            long delay = Delay(i.taskTime());
+            shedules.schedule(alarm,delay,TimeUnit.MILLISECONDS);
         }
 
 
     }
-    public static long Delay(){
+    public static long Delay(LocalTime Tasktime){
+        LocalDateTime now;
+        now = LocalDateTime.now();
+        LocalDateTime target=now.with(Tasktime);
+        if (target.isBefore(now)){
+            target.plusDays(1);
+        }
+        return Duration.between(now,target).toMillis();
+
 
     }
 

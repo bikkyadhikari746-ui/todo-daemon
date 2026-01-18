@@ -7,7 +7,7 @@ public class Alarmaclock implements  Runnable{
     @Override
     public void run() {
         System.out.println("Alarm is ringed");
-        System.out.println("Tak need to complete "+ task.getTaskName());
+        System.out.println("Task need to complete "+ task.getTaskName());
         task.setStatus(false);
 
     }
