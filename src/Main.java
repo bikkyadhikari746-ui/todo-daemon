@@ -36,23 +36,7 @@ public class Main {
             tasks=new ArrayList<>();
         }
 
-//        Task task= new Task("Study Java today","17:17");
-//        tasks.add(task);
-//        for(Task i:tasks){
-//            System.out.println(i);
-//        }
-//        for (int i = 0; i < 3; i++) {
-//            System.out.println("Enter the taskName");
-//            String ch= scan.nextLine();
-//            System.out.println("Enter the date");
-//            String chs=scan.nextLine();
-//            Task temp1= new Task(ch,chs);
-//            tasks.add(temp1);
-//            dbtask=text.toJson(tasks);
-//            Saving(dbtask);
 
-//
-//        }
         for(Task i:tasks){
             Runnable alarm=new Alarmaclock(i);
             long delay = Delay(i.taskTime());
@@ -76,19 +60,6 @@ public class Main {
 
 
 
-
-//        while (true) {
-//           LocalTime time = LocalTime.now();
-//            if (time.isAfter(task.taskTime())) {
-//                alarm(task);
-//                break;
-//            }else{
-//                System.out.println("------");
-//            }
-//
-//
-//
-//        }
 
     public static void alarm(Task task){
         System.out.println(task.getTaskName());
