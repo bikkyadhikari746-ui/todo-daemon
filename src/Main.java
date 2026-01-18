@@ -1,5 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -94,6 +96,16 @@ public class Main {
         }
         return sb.toString();
 
+    }
+    public static void cleanlist(ArrayList<Task> tasks){
+        for (int i = 0; i < tasks.size(); i++) {
+            Task temp=tasks.get(i);
+            if(temp.getStatus()==false){
+                tasks.remove(i);
+                i--;
+            }
+
+        }
     }
 }
 

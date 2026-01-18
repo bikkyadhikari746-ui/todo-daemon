@@ -29,7 +29,9 @@ public class Alarmaclock implements  Runnable{
         }
 
         task.setStatus(false);
+        Main.cleanlist(tasks);
         Main.Saving(tasks);
+
 
 
 
